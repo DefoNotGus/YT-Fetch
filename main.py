@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import yt_dlp
 import os
 import time
@@ -13,6 +14,59 @@ if not os.path.exists(DOWNLOAD_FOLDER):
 # --- App Layout ---
 st.set_page_config(page_title="Shorts to MP3", page_icon="🎵")
 st.title("🎵 YT-Fetch")
+
+st.markdown(
+    """
+    <style>
+    .floating-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: row; /* Align bubbles in a row */
+        gap: 15px;
+        z-index: 9999;
+    }
+    .bubble-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        text-decoration: none;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .bubble-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 8px rgba(0,0,0,0.3);
+    }
+    .bubble-link img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+    }
+    </style>
+
+    <div class="floating-container">
+        <!-- Linktree -->
+        <a href="https://linktr.ee/defonotgus" target="_blank" class="bubble-link" style="background-color: #43E660;" title="Linktree">
+            <img src="https://cdn.simpleicons.org/linktree/white" alt="Linktree" />
+        </a>
+        <!-- GitHub -->
+        <a href="https://github.com/DefoNotGus" target="_blank" class="bubble-link" style="background-color: #333333;" title="GitHub">
+            <img src="https://cdn.simpleicons.org/github/white" alt="GitHub" />
+        </a>
+        <!-- Buy Me a Coffee -->
+        <a href="https://www.buymeacoffee.com/defonotgus" target="_blank" class="bubble-link" style="background-color: #FFDD00;" title="Buy me a coffee">
+            <img src="https://cdn.simpleicons.org/buymeacoffee/000000" alt="Buy Me A Coffee" />
+        </a>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 st.write("Paste a link or type a search term to get the MP3.")
 
 # --- Input ---
