@@ -1,0 +1,12 @@
+services:
+  yt-audio-downloader:
+    build: .
+    container_name: yt-audio-downloader
+    restart: unless-stopped
+    ports:
+      - "8501:8501"
+    volumes:
+      # Optional: Map a folder if you want to inspect downloads on the host
+      - ./downloads:/app/downloads
+    environment:
+      - PYTHONUNBUFFERED=1
